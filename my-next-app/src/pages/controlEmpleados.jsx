@@ -90,12 +90,7 @@ function FormInicio() {
     );
 
     let ponerDatos = false;
-    if (!(new Date(fechaHoy).toDateString() === ultimoDiaDelMesActual.toDateString()) && (presentismo || boleto)) {
-      return notyf.error("Solo se puede cargar presentismo o boleto en el último día del mes");
-    }
-    else if ((new Date(fechaHoy).toDateString() === ultimoDiaDelMesActual.toDateString()) && (presentismo && boleto)) {
-      ponerDatos = true;
-    }
+
 
 
     try {
@@ -108,8 +103,8 @@ function FormInicio() {
           empleado: SelectEmpl,
           horas: parseFloat(horas),
           lugar: lugar,
-          presentismo: ponerDatos ? presentismo : " ",
-          boleto: ponerDatos ? boleto : " ",
+          presentismo: presentismo ? presentismo : " ",
+          boleto: boleto? boleto : " ",
           supervisor: { nombre: supervisor.nombre, _id: supervisor.user },
           adelanto: adelanto == "" ? 0 : adelanto
         }),
